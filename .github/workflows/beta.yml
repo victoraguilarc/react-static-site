@@ -1,4 +1,4 @@
-name: Development CI/CD
+name: Development Beta
 on:
   push:
     branches:
@@ -24,4 +24,5 @@ jobs:
         run: yarn build && yarn test
 
       - name: Deploy
-        run: aws s3 sync ./build/ s3://static-site-beta-bucket --delete
+        run: |
+          aws s3 sync ./build/ s3://static-site-beta-bucket --delete
