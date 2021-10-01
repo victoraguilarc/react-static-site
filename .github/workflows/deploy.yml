@@ -7,10 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v1
 
@@ -28,4 +24,4 @@ jobs:
         run: yarn build && yarn test
 
       - name: Deploy
-        run: aws s3 sync ./build/ s3://<bucket-name> --delete
+        run: aws s3 sync ./build/ s3://static-site-beta-bucket --delete
